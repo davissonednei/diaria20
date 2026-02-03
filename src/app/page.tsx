@@ -162,33 +162,33 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen p-4 md:p-8">
+    <main className="min-h-screen p-4 md:p-8 text-slate-800">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <header className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-red-500 mb-2">
+        <header className="text-center mb-8 fade-up">
+          <h1 className="text-3xl md:text-4xl font-bold text-red-600 mb-2">
             🏛️ CONTROLE DE DIÁRIAS
           </h1>
-          <p className="text-red-300/70">Sistema de Controle do Quartel</p>
+          <p className="text-slate-500">Sistema de Controle do Quartel</p>
         </header>
 
         {/* Card Saldo */}
-        <div className="bg-[#2d0a0a] border-2 border-red-800 rounded-xl p-6 mb-6 text-center">
-          <p className="text-red-300/70 text-sm mb-1">SALDO DISPONÍVEL</p>
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-6 text-center shadow-sm fade-up fade-up-delay-1">
+          <p className="text-slate-500 text-sm mb-1">SALDO DISPONÍVEL</p>
           <p
             className={`text-4xl font-bold ${
-              saldoDisponivel >= 0 ? "text-green-500" : "text-red-500"
+              saldoDisponivel >= 0 ? "text-emerald-600" : "text-red-600"
             }`}
           >
             {formatarReais(saldoDisponivel)}
           </p>
-          <p className="text-red-300/50 text-sm mt-2">
+          <p className="text-slate-500 text-sm mt-2">
             de {formatarReais(SALDO_MENSAL)} | Gasto: {formatarReais(totalGasto)}
           </p>
-          <div className="mt-3 bg-red-950 rounded-full h-3 overflow-hidden">
+          <div className="mt-3 bg-slate-200 rounded-full h-3 overflow-hidden">
             <div
               className={`h-full transition-all ${
-                saldoDisponivel >= 0 ? "bg-green-600" : "bg-red-600"
+                saldoDisponivel >= 0 ? "bg-emerald-500" : "bg-red-500"
               }`}
               style={{
                 width: `${Math.min((totalGasto / SALDO_MENSAL) * 100, 100)}%`,
@@ -200,9 +200,9 @@ export default function Home() {
         {/* Formulário Nova Diária */}
         <form
           onSubmit={inserirDiaria}
-          className="bg-[#2d0a0a] border border-red-800 rounded-xl p-4 mb-6"
+          className="bg-white border border-slate-200 rounded-2xl p-4 mb-6 shadow-sm fade-up fade-up-delay-2"
         >
-          <h2 className="text-lg font-semibold text-red-400 mb-3">
+          <h2 className="text-lg font-semibold text-slate-700 mb-3">
             ➕ Nova Diária
           </h2>
           <div className="flex flex-col md:flex-row gap-3">
@@ -211,7 +211,7 @@ export default function Home() {
               placeholder="Nome do Militar"
               value={novoMilitar}
               onChange={(e) => setNovoMilitar(e.target.value)}
-              className="flex-1 bg-[#450a0a] border border-red-800 rounded-lg px-4 py-2 text-red-100 placeholder-red-400/50 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="flex-1 bg-white border border-slate-200 rounded-lg px-4 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-400"
             />
             <input
               type="number"
@@ -220,11 +220,11 @@ export default function Home() {
               onChange={(e) => setNovoValor(e.target.value)}
               step="0.01"
               min="0"
-              className="w-full md:w-40 bg-[#450a0a] border border-red-800 rounded-lg px-4 py-2 text-red-100 placeholder-red-400/50 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full md:w-40 bg-white border border-slate-200 rounded-lg px-4 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-400"
             />
             <button
               type="submit"
-              className="bg-red-700 hover:bg-red-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors"
+              className="bg-red-600 hover:bg-red-500 text-white font-semibold px-6 py-2 rounded-lg transition-colors"
             >
               Inserir
             </button>
@@ -232,8 +232,8 @@ export default function Home() {
         </form>
 
         {/* Filtros */}
-        <div className="bg-[#2d0a0a] border border-red-800 rounded-xl p-4 mb-6">
-          <h2 className="text-lg font-semibold text-red-400 mb-3">
+        <div className="bg-white border border-slate-200 rounded-2xl p-4 mb-6 shadow-sm fade-up fade-up-delay-3">
+          <h2 className="text-lg font-semibold text-slate-700 mb-3">
             🔍 Filtros
           </h2>
           <div className="flex flex-col md:flex-row gap-3">
@@ -242,7 +242,7 @@ export default function Home() {
               placeholder="Buscar militar..."
               value={filtroMilitar}
               onChange={(e) => setFiltroMilitar(e.target.value)}
-              className="flex-1 bg-[#450a0a] border border-red-800 rounded-lg px-4 py-2 text-red-100 placeholder-red-400/50 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="flex-1 bg-white border border-slate-200 rounded-lg px-4 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-400"
             />
             <input
               type="number"
@@ -250,7 +250,7 @@ export default function Home() {
               value={filtroValorMin}
               onChange={(e) => setFiltroValorMin(e.target.value)}
               step="0.01"
-              className="w-full md:w-32 bg-[#450a0a] border border-red-800 rounded-lg px-4 py-2 text-red-100 placeholder-red-400/50 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full md:w-32 bg-white border border-slate-200 rounded-lg px-4 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-400"
             />
             <input
               type="number"
@@ -258,7 +258,7 @@ export default function Home() {
               value={filtroValorMax}
               onChange={(e) => setFiltroValorMax(e.target.value)}
               step="0.01"
-              className="w-full md:w-32 bg-[#450a0a] border border-red-800 rounded-lg px-4 py-2 text-red-100 placeholder-red-400/50 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="w-full md:w-32 bg-white border border-slate-200 rounded-lg px-4 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-400"
             />
             {(filtroMilitar || filtroValorMin || filtroValorMax) && (
               <button
@@ -267,7 +267,7 @@ export default function Home() {
                   setFiltroValorMin("");
                   setFiltroValorMax("");
                 }}
-                className="bg-red-900 hover:bg-red-800 text-red-300 px-4 py-2 rounded-lg transition-colors"
+                className="bg-slate-100 hover:bg-slate-200 text-slate-600 px-4 py-2 rounded-lg transition-colors"
               >
                 Limpar
               </button>
@@ -277,18 +277,18 @@ export default function Home() {
 
         {/* Resumo por Militar */}
         {resumoPorMilitar.length > 0 && (
-          <div className="bg-[#2d0a0a] border border-red-800 rounded-xl p-4 mb-6">
-            <h2 className="text-lg font-semibold text-red-400 mb-3">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 mb-6 shadow-sm fade-up">
+            <h2 className="text-lg font-semibold text-slate-700 mb-3">
               📊 Resumo por Militar
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {resumoPorMilitar.map((r) => (
                 <div
                   key={r.nome}
-                  className="bg-[#450a0a] border border-red-900 rounded-lg p-3"
+                  className="bg-slate-50 border border-slate-200 rounded-lg p-3"
                 >
-                  <p className="font-semibold text-red-200">{r.nome}</p>
-                  <p className="text-red-400 text-sm">
+                  <p className="font-semibold text-slate-800">{r.nome}</p>
+                  <p className="text-slate-600 text-sm">
                     {r.quantidade} diária{r.quantidade > 1 ? "s" : ""} •{" "}
                     {formatarReais(r.total)}
                   </p>
@@ -299,15 +299,15 @@ export default function Home() {
         )}
 
         {/* Tabela de Registros */}
-        <div className="bg-[#2d0a0a] border border-red-800 rounded-xl overflow-hidden">
-          <h2 className="text-lg font-semibold text-red-400 p-4 border-b border-red-800">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm fade-up">
+          <h2 className="text-lg font-semibold text-slate-700 p-4 border-b border-slate-200">
             📋 Registros ({diariasFiltradas.length})
           </h2>
 
           {loading ? (
-            <div className="p-8 text-center text-red-400">Carregando...</div>
+            <div className="p-8 text-center text-slate-500">Carregando...</div>
           ) : diariasFiltradas.length === 0 ? (
-            <div className="p-8 text-center text-red-400/70">
+            <div className="p-8 text-center text-slate-500">
               {diarias.length === 0
                 ? "Nenhuma diária registrada."
                 : "Nenhum resultado encontrado com os filtros aplicados."}
@@ -315,18 +315,18 @@ export default function Home() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-[#450a0a]">
+                <thead className="bg-slate-50">
                   <tr>
-                    <th className="text-left px-4 py-3 text-red-300 font-semibold">
+                    <th className="text-left px-4 py-3 text-slate-600 font-semibold">
                       Militar
                     </th>
-                    <th className="text-left px-4 py-3 text-red-300 font-semibold">
+                    <th className="text-left px-4 py-3 text-slate-600 font-semibold">
                       Valor
                     </th>
-                    <th className="text-left px-4 py-3 text-red-300 font-semibold">
+                    <th className="text-left px-4 py-3 text-slate-600 font-semibold">
                       Data
                     </th>
-                    <th className="text-center px-4 py-3 text-red-300 font-semibold">
+                    <th className="text-center px-4 py-3 text-slate-600 font-semibold">
                       Ações
                     </th>
                   </tr>
@@ -335,7 +335,7 @@ export default function Home() {
                   {diariasFiltradas.map((d) => (
                     <tr
                       key={d.id}
-                      className="border-t border-red-900/50 hover:bg-red-950/30 transition-colors"
+                      className="border-t border-slate-200 hover:bg-slate-50 transition-colors"
                     >
                       {editandoId === d.id ? (
                         <>
@@ -344,7 +344,7 @@ export default function Home() {
                               type="text"
                               value={editMilitar}
                               onChange={(e) => setEditMilitar(e.target.value)}
-                              className="w-full bg-[#450a0a] border border-red-700 rounded px-2 py-1 text-red-100"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-slate-800"
                             />
                           </td>
                           <td className="px-4 py-3">
@@ -353,22 +353,22 @@ export default function Home() {
                               value={editValor}
                               onChange={(e) => setEditValor(e.target.value)}
                               step="0.01"
-                              className="w-24 bg-[#450a0a] border border-red-700 rounded px-2 py-1 text-red-100"
+                              className="w-24 bg-white border border-slate-200 rounded px-2 py-1 text-slate-800"
                             />
                           </td>
-                          <td className="px-4 py-3 text-red-300/70">
+                          <td className="px-4 py-3 text-slate-500">
                             {formatarData(d.created_at)}
                           </td>
                           <td className="px-4 py-3 text-center">
                             <button
                               onClick={() => salvarEdicao(d.id)}
-                              className="text-green-500 hover:text-green-400 mr-2"
+                              className="text-emerald-600 hover:text-emerald-500 mr-2"
                             >
                               ✓
                             </button>
                             <button
                               onClick={cancelarEdicao}
-                              className="text-red-500 hover:text-red-400"
+                              className="text-red-600 hover:text-red-500"
                             >
                               ✕
                             </button>
@@ -376,26 +376,26 @@ export default function Home() {
                         </>
                       ) : (
                         <>
-                          <td className="px-4 py-3 text-red-100 font-medium">
+                          <td className="px-4 py-3 text-slate-800 font-medium">
                             {d.militar_nome}
                           </td>
-                          <td className="px-4 py-3 text-red-200">
+                          <td className="px-4 py-3 text-slate-700">
                             {formatarReais(Number(d.valor))}
                           </td>
-                          <td className="px-4 py-3 text-red-300/70">
+                          <td className="px-4 py-3 text-slate-500">
                             {formatarData(d.created_at)}
                           </td>
                           <td className="px-4 py-3 text-center">
                             <button
                               onClick={() => iniciarEdicao(d)}
-                              className="text-yellow-500 hover:text-yellow-400 mr-3"
+                              className="text-amber-600 hover:text-amber-500 mr-3"
                               title="Editar"
                             >
                               ✏️
                             </button>
                             <button
                               onClick={() => excluirDiaria(d.id)}
-                              className="text-red-500 hover:text-red-400"
+                              className="text-red-600 hover:text-red-500"
                               title="Excluir"
                             >
                               🗑️
@@ -412,7 +412,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="text-center mt-8 text-red-400/50 text-sm">
+        <footer className="text-center mt-8 text-slate-400 text-sm">
           Sistema de Controle de Diárias • {new Date().getFullYear()}
         </footer>
       </div>
